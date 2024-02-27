@@ -1,0 +1,77 @@
+<div class="container">
+    <div class="card mt-5">
+        <div class="card-header">
+            Estudiantes
+        </div>
+        <div class="card-body">
+            contenido de estudiantes
+            <hr>
+            <div *ngIf="listEstudiantes.length == 0">No hay registro de estudiantes</div>
+            <div *ngIf="listEstudiantes.length != 0" >
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Identificación</th>
+                        <th>Nombre</th>
+                        <th>Calificación</th>
+                        <th>Acción</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let estudiante of listEstudiantes">
+                        <td>{{ estudiante.id }}</td>
+                        <td>{{ estudiante.nombre }}</td>
+                        <td>{{ estudiante.calificacion }}</td>
+                        <td>
+                            <button class="btn btn-danger mx-1" (click)="eliminarEstudiante(estudiante.id)">Drop</button>
+                            <button class="btn btn-warning mx-1" (click)="editarEstudiante(estudiante.id)">Edit</button>
+                        </td>
+                    </tr>
+                            
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <form [formGroup]="datosUsuario">
+        <div class="d-flex justify-content-center mt-4">
+            <div class="mb-3 mx-1">
+                <input type="number" class="form-control" formControlName="id" placeholder="Identificacion" aria-label="Identificacion">
+                <span class="danger" *ngIf="datosUsuario.get('id')!.invalid && datosUsuario.get('id')!.touched">La Identificación es <strong>Obligatoria</strong></span>
+            </div>
+            <div class="mb-3 mx-1">
+                <input type="text" class="form-control mb-3 mx-1" formControlName="nombre" placeholder="Nombre Estudiante" aria-label="estudiante">
+                <span class="danger" *ngIf="datosUsuario.get('nombre')!.invalid && datosUsuario.get('nombre')!.touched">El nombre es <strong>Obligatorio</strong></span>
+            </div>
+            <div class="mb-3 mx-1">
+                <input type="number" class="form-control mb-3 mx-1" formControlName="calificacion" placeholder="Calificación" aria-label="calificacion">
+                <span class="danger" *ngIf="datosUsuario.get('calificacion')!.invalid && datosUsuario.get('calificacion')!.touched">La calificación es <strong>Obligatoria</strong></span>
+            </div>
+            <button class="btn btn-success px-4" (click)="registrarEstudiante()" [disabled]="datosUsuario.invalid">+</button>
+    
+        </div>
+
+    </form>
+
+    <form [formGroup]="editarUsuario" *ngIf="idEstudianteEditar != 0">
+        <div class="card">
+            <div class="card-header">
+                Editar Usuario
+            </div>
+            <div class="card-body">
+                <div class="mb-3 mx-1">
+                    <input type="text" class="form-control mb-3 mx-1" formControlName="editarNombre" placeholder="Nuevo Nombre Estudiante" aria-label="estudiante">
+                    <span class="danger" *ngIf="editarUsuario.get('editarNombre')!.invalid && editarUsuario.get('editarNombre')!.touched">El nombre es <strong>Obligatorio</strong></span>
+                </div>
+                <div class="mb-3 mx-1">
+                    <input type="number" class="form-control mb-3 mx-1" formControlName="editarCalificacion" placeholder="Editar Calificación" aria-label="calificacion">
+                    <span class="danger" *ngIf="editarUsuario.get('editarCalificacion')!.invalid && editarUsuario.get('editarCalificacion')!.touched">La calificación es <strong>Obligatoria</strong></span>
+                </div>
+                <button class="btn btn-warning" (click)="actualizarEstudiante()">Actualizar</button>
+            </div>
+        </div>
+    </form>
+</div>

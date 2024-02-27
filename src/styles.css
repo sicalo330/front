@@ -1,0 +1,145 @@
+@import "~bootstrap/dist/css/bootstrap.min.css";
+
+
+.princ{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.contenedorPrincipal {
+    height: 100vh;
+    background: #ffffff;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: -1;
+}
+
+.olas {
+    position: fixed;
+   /* left: 0;
+    right: 0;
+    height: 200px;
+    bottom: 0;
+   */
+    height: 527px;
+    width: 100%;
+    /* overflow: hidden; */
+    z-index: -1;
+}
+.ola {
+    position: fixed;
+    top: 0;
+   /*width: 200px;
+   */
+   /*height: 200px;
+   */
+   /*width: 100%;
+   */
+   /*border-radius: 50%;
+   */
+   /*background:rgba(0,0,0, .3);
+   */
+    width: 2402px;
+    height: 427px;
+    background: url(assets/img/image.png) center bottom no-repeat;
+    z-index: -1;
+    animation: 5s ola ease-in-out infinite alternate;
+}
+.ola.a {
+    background-position: 0 -854px;
+}
+.ola.b {
+    background-position: 0 -427px;
+    animation-delay: 0.6s;
+}
+.ola.c {
+    background-position: 0 0;
+    animation-delay: 1.2s;
+}
+/*.container {
+    position: absolute;
+}
+*/
+@keyframes ola {
+    0% {
+        transform: translate(0, -120px);
+   }
+    50% {
+        transform: translate(-80px, -170px);
+   }
+    100% {
+        transform: translate(160px, -220px);
+   }
+}
+
+
+.flotante{
+    position: absolute;
+    
+    background-color: rgba(132, 164, 212, 0.1);
+    border-radius: 30% 70% 34% 66% / 52% 39% 61% 48%;
+    animation: 15s bola ease-in-out infinite alternate;
+}
+
+.flotante1{
+    height: 300px;
+    width: 300px;
+    left: 50px;
+    bottom: 50px;
+}
+
+.flotante2{
+    height: 450px;
+    width: 450px;
+    right: 250px;
+    bottom: 50px;
+}
+
+@keyframes bola {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+   }
+   33%{
+        transform: translate(-80px, 30px) rotate(90deg);
+   }
+    66% {
+        transform: translate(160px, -60px) rotate(180deg);
+   }
+    100% {
+        transform: translate(0, 0) rotate(360deg);
+   }
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+
+*::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+
+*::-webkit-scrollbar:vertical {
+    width:7px;
+}
+
+*::-webkit-scrollbar-button:increment,body::-webkit-scrollbar-button {
+    display: none;
+} 
+
+*::-webkit-scrollbar:horizontal {
+    height: 0px;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #797979;
+    border-radius: 20px;
+    border: 2px solid #f1f2f3;
+}
+
+*::-webkit-scrollbar-track {
+    border-radius: 10px;  
+}
