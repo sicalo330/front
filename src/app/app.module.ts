@@ -18,10 +18,13 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatCardModule } from '@angular/material/card';
 import { InicioComponent } from './componentes/inicio/inicio.component';
+import { LoginComponent } from './componentes/login/login.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     AppComponent,
     InicioComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,7 +42,8 @@ import { InicioComponent } from './componentes/inicio/inicio.component';
     MatInputModule,
 
     MatCardModule,
-    ToastrModule.forRoot(), // ToastrModule added
+    ToastrModule.forRoot(),
+    NgbModule, // ToastrModule added
   ],
   providers: [ 
     // { provide: HTTP_INTERCEPTORS, useClass: AddTokenInterceptor, multi: true }
