@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Estudiantes } from 'src/app/modelos/estudiantes';
 import { EstudiantesService } from 'src/app/services/estudiantes.service';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-inicio',
@@ -17,7 +18,7 @@ export class InicioComponent implements OnInit {
 
   idEstudianteEditar: number = 0
 
-  constructor(private estudianteService: EstudiantesService,
+  constructor(private estudianteService: EstudiantesService, private loginService: LoginService,
               private fb: FormBuilder) {
     this.datosUsuario = this.fb.group({
       id: ['', Validators.required],
@@ -34,8 +35,7 @@ export class InicioComponent implements OnInit {
 
   ngOnInit(): void {
     this.estudianteService.getEstudiantes().subscribe( data => {
-      console.log('asdas')
-      this.listEstudiantes = data;
+      this.loginService.getTokenDecoded()
     }, error => {
       console.log('Se presento un error en el consumo de la api: '+ error )
     })
