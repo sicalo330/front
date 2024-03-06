@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { AddTokenInterceptor } from './helpers/add-token.interceptor';
 
 //MODULOS
 
@@ -46,7 +48,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     NgbModule, // ToastrModule added
   ],
   providers: [ 
-    // { provide: HTTP_INTERCEPTORS, useClass: AddTokenInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: AddTokenInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

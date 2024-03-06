@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
       contraseña: this.datos.get('contraseña')!.value,
     }
     this.loginService.postData(datos).subscribe(data => {
-      console.log(data)
+      this.loginService.setLocalStorage(Object.values(data)[0])
     })
   }
 

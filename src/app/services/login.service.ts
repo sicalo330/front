@@ -13,7 +13,7 @@ export class LoginService {
 
   constructor(private http:HttpClient) { 
     this.myAppUrl = environment.endpoint;
-    this.myApiUrl = '/usuario';
+    this.myApiUrl = '/Usuario';
   }
   
 
@@ -34,8 +34,11 @@ export class LoginService {
     return localStorage.getItem('token')!
  }
 
+ setLocalStorage(data: string): void{
+    localStorage.setItem('token', data)
+  }
+
  postData(usuario:Usuario){
-  console.log(usuario)
-  return this.http.post(this.myAppUrl + this.myApiUrl + '/postUsuario', usuario)
+    return this.http.post(this.myAppUrl + this.myApiUrl + '/postUsuario', usuario)
  }
 }
